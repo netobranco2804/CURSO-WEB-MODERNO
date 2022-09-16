@@ -23,7 +23,7 @@ function getProduto(id) {
 
 //criar função para retornar todos os produtos
 function getProdutos() {
-    return Object.values(...produtos)
+    return Object.values(produtos)
 }
 
 //Como tornar essas funções que estão visiveis apenas dentro desse modulo, deixando visivel para fora

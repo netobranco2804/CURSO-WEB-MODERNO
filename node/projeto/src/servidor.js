@@ -1,10 +1,11 @@
 const porta = 3009
 
 const express = require('express')
+var cors = require('cors')
 const app = express()
 const bancoDeDados = require('./bancoDeDados')
 const bodyParser = require('body-parser') //importo para que o programa postMan funcione
-
+app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/produtos', (req, res, next) => {

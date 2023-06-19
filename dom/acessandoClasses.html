@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        
+        //pegar lista de classes do elemento document.querySelector
+        const classes = document.querySelector('div').classList
+        //Apartir do classList você consegue adicionar/remover
+        //consegue também usar uma função chamada toggle = se não tiver ele adiconar | se tiver= ele remove
+        classes.add('destaque')
+        classes.remove('destaque')
+        classes.toggle('destaque')
+        //pode verificar se a determinada classe esta contida ou não na lista de classes
+        console.log(classes.contains('destaque'))
+        //Podemos ver o tamanho, o tanto de classes que determinado elemento tem
+        console.log(classes.lenght)
+        classes.toggle('destaque') //como esta fazendo pela segunda vez, ele agora ira remover (toggle)
+        console.log(classes.length) // agora da 0 porque ele acabou de remover na linha a cima
+        
+        classes.add('destaque1')
+        classes.add('destaque2')
+        console.log(classes.length)
+
+        //laço FOR para pegar todas as classes de um determinado elemento
+
+        for(let c of classes) {
+            console.log(c)  //trazendo os dois elementos criados (destaque1/destaque2)
+        }
+
+
+        //percorrer elementos com forEach que é parecido com o for
+
+        classes.forEach(c => console.log(c))    //trazendo os dois elementos criados (destaque1/destaque2)
+        
+
+    </script>
+</body>
+
+</html>

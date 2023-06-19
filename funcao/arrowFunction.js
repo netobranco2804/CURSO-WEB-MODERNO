@@ -9,13 +9,15 @@ dobro = (a) => {
 }
 
 //Forma mais reduzida, tirando os parenteses caso tenha apenas um parametro
-dobro = a => 2 * a // return implicito
-console.log(dobro(Math.PI))
+dobro = a => 2 * a // return implicito - INCLUI O RETURN automaticamente
+console.log(dobro(Math.PI)) // trará o dobro de PI - 6.283185307179586
 
-//Outro exemplo
+//Outro exemplo de funções sem paramentro
 
-let ola = function () {
+let ola = function () { 
     return 'Olá'
 }
 
-ola = () => 'Olá'
+ola = () => 'Olá' // forma padrão
+ola = _ => 'Olá' // possui um parametro, mas pode ser ignorado se eu quiser
+console.log(ola())

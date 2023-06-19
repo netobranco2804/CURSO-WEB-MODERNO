@@ -1,4 +1,4 @@
-let comparaComThis = function(param) {
+let comparaComThis = function(param) {   //fazendo função normal global aponta para o this
 console.log(this === param)
 }
 comparaComThis(global) // true
@@ -8,7 +8,7 @@ comparaComThis(global)// false
 comparaComThis(obj) // true
 
 //teste com arrow function =>
-let comparaComThisArrow = param => console.log(this === param)
+let comparaComThisArrow = param => console.log(this === param) // fazendo em função arrow, global não aponta para o this
 comparaComThisArrow(global) // false, função arrow nao aponta this para global
 comparaComThisArrow(module.exports) // true
 

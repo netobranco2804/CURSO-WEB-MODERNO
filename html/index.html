@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios HTML</title>
+    <style>
+        #conteudo{
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Exercicios HTML
+    </header>
+    <nav>
+        <a href="exercicios/teste.html">Exemplo (Teste)</a> |
+        <a href="exercicios/texto1.html">Exemplo Tags - 1</a> |
+        <a href="exercicios/texto2.html">Exemplo Tags - 2</a> |
+        <a href="exercicios/listas.html">Exemplo Listas - 3</a> |
+        <a href="exercicios/listaAninhada.html">Exemplo&exercicio Lista Aninhada - 4</a> |
+        <a href="exercicios/links.html">Exemplo Links - 5</a> |
+        <a href="exercicios/tabela.html">Exemplo Tabela - 6</a> |
+        <a href="exercicios/form/form.html">Exemplo Formulario Back e Front - 7</a> |
+        <a href="exercicios/imagens.html">Exemplo Imagens - 8</a> |
+        <a href="exercicios/video.html">Exemplo Video - 9</a> |
+        <a href="exercicios/tagsNaoVisuais.html">Exemplo Tags Não Visuais - 10</a> |
+
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        Curso de Web Moderno
+    </footer>
+    <script>
+        // querySelectAll - Retorna uma lista de tags A
+        //forEach link -> navegar dentro dessa função retornando cada um dos links
+        document.querySelectorAll('a').forEach(link => {
+            link.onclick = function(e){ //função que sera chamada quando o usuario clicar (e)=evento que recebe após clique
+                e.preventDefault() //previnir que a navegação ocorra para outra página, chamando a ação apenas(TENDO CONTEUDO EM UMA ÚNICA PÁGINA!)
+                const conteudo = document.getElementById('conteudo') //Obtendo elemento pelo ID.
+//Fazendo uma requisição Ajax e o resultado ira ser inserido dentro de conteudo.
+                fetch(link.href)
+                .then(resp => resp.text()) //resp.text serve para pegar o conteudo HTML da pagina que foi feita a requisição
+                .then(html => conteudo.innerHTML = html) // subistutui o conteudo da section e joga na mesma tela logo abaixo!
+            }
+        })
+    </script>
+
+</body>
+</html>

@@ -9,4 +9,4 @@ funcs[0]()
 funcs[8]() // pode adicionar qualquer numero, ele vai estar presente, desde que seja menor que 10.
 funcs[9]()
 
-//Let imprime certo, respeitando a ordem.
+//Let imprime certo, respeitando a ordem. Evitar uso de Var

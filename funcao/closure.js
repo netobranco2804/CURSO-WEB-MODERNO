@@ -15,4 +15,4 @@ function fora() {
 }
 
 const minhaFuncao = fora()
-console.log(minhaFuncao())
+console.log(minhaFuncao()) // retorna o x que está dentro da função FORA

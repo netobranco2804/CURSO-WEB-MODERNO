@@ -3,7 +3,7 @@ let b = 3;
 
 b += a // fazendo atribuicao aditiva/adição, nao esta substituindo o valor de um por outro, está apenas acrescentando o valor de a para variavel b somando os dois
 // b = b + a
-console.log(b);
+console.log(b); // valor = 10
 
 b -= 4 // Agora b é 10 do resultado a cima, porém b - 4 (10-4)=6
 console.log(b)

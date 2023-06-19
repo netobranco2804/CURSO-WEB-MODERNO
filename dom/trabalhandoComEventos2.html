@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        //ARRASTAR CONTEUDO DIV AO PRESSIONAR MOUSE
+        //selecionar a div
+        const item = document.querySelector('div')
+        //aplicando css nesse item que guardou a div para que consiga posicionar de forma absoluta na tela
+        item.style.position = 'absolute'
+        //tratar evento em uma função arrow
+        item.onmousemove = e => {
+            item.style.cursor = 'move'
+            if (e.buttons) {//propriedade que muda de valor que é (e.buttons) = se tiver algum clicado ficara com um valor diferente de 0 e se for diferente de 0 dara verdadeiro
+                //e.target é quem dispara o evento
+                e.target.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                e.target.style.left = `${e.clientX- (item.clientWidth / 2)}px`
+            }
+        }
+    </script>
+</body>

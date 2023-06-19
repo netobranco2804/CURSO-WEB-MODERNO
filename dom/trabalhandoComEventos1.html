@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <a href="https://google.com.br" onclick="navegar5s(event)">Google</a>
+    </div>
+    <script>
+        
+        //Criando uma função para interceptar um evento que no caso seria clicar em google e se redirecionar. 
+        //Criando essa função:
+        function navegar5s(e) {
+           e.preventDefault()    //Interromper o evento padrao que ao clicar ocorra, não sera logo redirecionado em seguida respeitando o evento
+           console.log('Saindo em 5 segundos...')
+           /* Adicionando um setTimeOut chamando uma função que ira adicionar:
+           window.location.href = e.target.href
+           
+           (e) = evento
+           target: elemento html que disparou o evento, então se eu cliquei no link o target seria ele(link)*/
+           setTimeout(() => {
+            const link = e.target
+            window.location.href = link.href
+           }, 5000)
+        }
+
+
+        //Outra opção de navegação de eventos
+        //selecionar um elemento do tipo 'a'
+        const a = document.querySelector('a')
+        a.onclick = navegar5s
+
+
+    </script>
+</body>

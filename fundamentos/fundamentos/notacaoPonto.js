@@ -1,5 +1,5 @@
 //Math é um objeto dentro de java, só pra Lembrar
-console.log(Math.ceil(6.1)); //ceil operar um arredondamento, ele leva pro teto/cima
+console.log(Math.ceil(6.1)); //ceil operar um arredondamento, ele leva pro teto/cima = 7
 
 const obj1 = {}
 obj1.nome = 'Bola'

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        
+        //Criando uma constante para armazenar lista
+        const lista = document.querySelector('#compras')
+        console.log('Elemento "ul"......')
+        console.log('childNodes', lista.childNodes)
+        console.log('destino', lista.id)
+        console.log('getAttibute', lista.getAttribute('destino')) // mostra o resultado do atributo destino = escritorio
+        console.log('hasAttribute', lista.hasAttribute('destino')) // has atribute para ver se o atribute existe true ou false = true
+        lista.setAttribute('destino', 'empresa') //setou um novo valor para destino, ao inves de ser escritório, passara a ser empresa.
+        lista.setAttribute('status', 'aberto') //setando um atributo que não existe+valor, resultado: acresentara um atributo novo na linha do codigo status='aberto'
+        lista.removeAttribute('destino') // deletando o atributo destino
+
+        //cuidado
+        const label = document.querySelector('label')
+        console.log(label.for) // não consegue visualizar a label pois pelo for assim não é possivel puxar
+        console.log(label.htmlFor) // forma correta e que da certo de puxar e ver o atributo 
+        console.log(label.getAttribute('for')) // ou pode ser dessa forma para ver os atributos dentro de label
+
+    </script>
+</body>
+
+</html>

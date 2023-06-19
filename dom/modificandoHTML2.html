@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <p>Texto Inicial</p>
+    </div>
+    <script>
+        
+        //Primeiramente Selecionar o div
+        const div = document.querySelector('div')
+        //innerHTML = ele substitui tudo o que esta dentro da div pelo valor inserido
+        div.innerHTML = 'Texto Alterado'
+        // div.outerHTML = 'Texto Alterado' //deixa somente a escrita, sem o background de fundo da div
+
+        //Antes de começar o elemento div, acrescente um determinado html antes do incio
+        div.insertAdjacentHTML('beforebegin', '<p>Antes Inicio</p>')
+        //Colocando o paragrafo dentro da div
+        div.insertAdjacentHTML('afterbegin', '<p>Depois Inicio</p>')
+        //Colocando paragrafo antes do fim
+        div.insertAdjacentHTML('beforeend', '<p>Antes FIM</p>')
+        //Depois do elemento, adiconando paragrafo para fora da div
+        div.insertAdjacentHTML('afterend', '<p>Depois FIM</p>')
+
+        //somente texto(sem TAGS)
+        console.log(div.innerText)
+
+    </script>
+</body>
+
+</html>

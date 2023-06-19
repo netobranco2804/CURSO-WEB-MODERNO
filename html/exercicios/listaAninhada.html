@@ -1,0 +1,58 @@
+<!--Desenvolva um sistema que consiga mostrar e esconder arquivos que estão dentro de uma pasta no formato arvore-->
+
+<h1>Projeto</h1>
+<ul class="tree">
+    <li>
+       <span folder>Beckend</span>
+        <ul>
+            <li>
+                <span folder>App</span>
+                <ul>
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <span folder>config</span>
+                <ul>
+                    <li>banco.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span folder>frontend</span>
+        <ul>
+            <li>
+                <span folder>public</span>
+            <ul>    
+            <ul>
+            <li>app.css</li>
+            <li>app.js</li>
+            <li>index.html</li>
+            </ul>
+        </ul>
+        <ul>
+
+        </ul>
+    </li>
+</ul>
+
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">
+<script>
+//queryselectorall seleciona todos os elementos marcados com a propriedade marcada ('[folder]')
+//forEach pegar cada um dos elementos
+//folder => cada uma das suas suspostas pastas
+//onclick atribui evento para quando clicar ele funcionar
+    document.querySelectorAll('[folder]').forEach(folder => {
+        folder.onclick = function(e) {
+            //console.log('teste') -> pra ver se funciona quando aperta na pasta, console do f12
+            const ul = folder.nextElementSibling //pegando proximo elemento que esta logo abaixo da pasta
+            //console.log(ul) -> verificando no f12 para ver se também esta puxando as ul 
+            const d = ul.style.display 
+            //Se o display for extritamente igual none, mudara a visibilidade, caso contrario se for visivel, apelicara o none
+            ul.style.display = d ==='none' ? 'block' : 'none'
+        }
+    })
+</script>

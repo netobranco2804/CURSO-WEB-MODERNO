@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+        /*Navegar pela página trazendo conteúdo de outro arquivo html de forma ajax
+        Jogando tudo dentro de uma só div da página principal, sem precisar ficar carregando*/
+        //url seria o link que contem o arquivo.html, e o seletor seria o destino .pagina, que faz jogar da div pagina
+        function navegarViaAjax(url, seletor) {
+            /*Fazendo uma validação
+            if = Se não tem url || = ou não tem o seletor, significa que não precisa fazer a navegação para não perder tempo*/
+            if(!url || !seletor) return //return pra sair da função, caso não tenha os dois
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+            .then(resp => resp.text()) //.text pegar o texto(conteudo) dentro do arquivo html
+            .then(html => { //com o conteudo que você ja pegou a cima, você consegue jogar ele dentro do elemento
+                elemento.innerHTML = html
+            }) 
+        }
+
+        //pegar todos os links que estao marcados com wm-link
+        //vai fazer um forEach para cada um dos meus elementos que serao os links, fazendo executar essa callback
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            const url = link.attributes['wm-link'].value //pegar valor desse atributo
+            const seletorDestino = link.attributes['wm-destino'].value
+            //capturar evento do clique em cima desses links
+            link.onclick = e => {
+                e.preventDefault() //evitar navegação padrão que o link causa
+                navegarViaAjax(url, seletorDestino)
+            }
+        })
+
+
+        /*Como essa função não faz carregar a pagina do browser para outra
+        trazendo o conteudo de outro arquivo para o mesmo index.html
+        e conforme você navega o link não se altera, ao menos que você faça de outra maneira.
+        Da pra fazer ele navegar na mesma página tampém, alterando os nomes na url, indicando qual menu você esta vendo, 
+        mantendo tudo na mesma página sem carregar para outra, apenas alterando o nome da url para o destino selecionado*/
+
+        /*Porque foi adicionado o push = true?
+        - Porque no momento que clicar para voltar, eu também vou precisar chamar a função via Ajax
+        só que quando estiver voltando no browser, eu não posso adicionar essa volta no historico, se não ficaria sem sentido
+        por isso a opção do push, porque dai quando voltar no histórico, ira passar push = false, 
+        fazendo com que não adicione a volta no histórico*/
+
+        function navegarViaAjax(url, seletor, push = true) {
+            if(!url || !seletor) return 
+            const elemento = document.querySelector(seletor)
+            fetch(url)
+            .then(resp => resp.text()) 
+            .then(html => {  
+                elemento.innerHTML = html
+                if(push) { //se o push estiver true ele adicionar a opção a baixo
+                    history.pushState({ seletor }, 'Página Ajax', url) //colocando mais um elemento no browser, fazendo com que atualize a url
+                }
+            }) 
+        }
+
+        //tratar um evento agora, pois é necessario com essa opção
+        /*Estou tirando dentro de uma estrutura de dados do tipo pilha, você tem a função pop que é para tirar
+        o primeiro elemento da pilha.
+        Você tem uma pilha que é o seu historico de navegação, e quando você volta você vai tirando os elementos da pilha*/
+        window.onpopstate = e => {
+            if(e.state) { //se o e.state estiver presente
+                navegarViaAjax(window.location.href, e.state.seletor, false) //aquilo que acabou de adicionar no histórico, eu quero navegar para essa url href
+            }
+        }
+
+
+
+
+    </script>
+</body>

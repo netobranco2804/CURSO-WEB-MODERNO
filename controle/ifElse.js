@@ -8,7 +8,7 @@ const imprimirResultado = function(nota) {
 
 imprimirResultado(10)
 imprimirResultado(4)
-// imprimirResultado('Epa!!') // cuidado ao usar string nesse caso.
+// imprimirResultado('Epa!!') // cuidado ao usar string nesse caso, pois esta lendo apenas numeros para ver se é verdade ou falso.
 
 /*
 Outra maneira de se fazer que também funciona, apenas tirando os blocos e deixando sem

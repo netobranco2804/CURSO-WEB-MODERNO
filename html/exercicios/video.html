@@ -1,0 +1,64 @@
+<!--comandos : controls= faz vídeo aparecer botão de play, volume, download, tempo de video-->
+<!--autoplay: faz com que assim que apertar no botão do vídeo, ele reproduza automaticamente-->
+<!--controlsList = faz com que tire as opções de download do seu vídeo-->
+
+<video id="meuvideo" width="800px" height="450px" controls="" autoplay="" controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    <!--Pode adicionar vários modelos de arquivo, caso nenhum seja atendido, retornar alguma mensagem abaixo:-->
+    Seu Browser não suporta a tag de vídeo.
+</video>
+
+<div wm-progresso="meuvideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuvideo">Play</button>
+    <button wm-pause="meuvideo">Pause</button>
+</div>
+
+<script>
+    function configurarVideo(id) {
+        const video = document.getElementById(id)
+        video.oncontextmenu = () => false //comando que oculta opções de download ao clicar com botão direito em cima de um player
+        //puxando botão wm-play junto com o id que será = meuvideo
+        //trazendo um evento onclick que de fato ao apertar nele, dispara video.play que dera play no video
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play() 
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause() 
+
+        //Criando a opção da barra de progresso acompanhar o video assim que apertar play
+        setInterval(() => {
+        const percentual = (video.currentTime / video.duration) * 100
+        //Puxando agora a div wm progresso
+        const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`) // > div = pegando a div que esta vazia dentro de wm-progresso
+        //Agora você pode aplicar o valor que você quer dentro da div
+        valorDiv.style.width = `${percentual}%`
+        //colocar valor explicito dentro da div, para mostrar quantos % o vídeo ja foi assistido
+        valorDiv.innerHTML = `${percentual.toFixed(1)}%` //mostre apenas uma única casa decimal
+        //Setar agora de quanto em quanto tempo essa função setinterval fique checando esses elementos
+    }, 500)
+    }
+    configurarVideo('meuvideo')
+    </script>
+
+<style>
+    .progresso{
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div {
+        background-color: red;
+        color: white;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 10%;
+    }
+
+
+
+
+</style>

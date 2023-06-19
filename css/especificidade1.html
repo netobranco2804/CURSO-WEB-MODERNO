@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Especificidade CSS</title>
+    <style>
+        /* https://developer.mozilla.org/pt-BR/docs/Web/CSS/Specificity */
+        /* Em linhas gerais ...
+        
+        1º regra com !import
+        2º seletores mais específicos
+        3º última regra processada (empate)        
+        */
+
+        p { /* Somente a tag p é fraca */
+            background-color: #aaa; 
+        }
+
+        .observacao { /* puxando pela .class tem mais prioridade do que puxar somente um p, então aqui sobrescrevera o css p do exemplo acima */
+            background-color: #5f5;
+            border: dashed 5px;
+            padding: 20px;
+            font-size: 40px;
+        }
+
+        p.observacao{ /* Essa tem mais força ainda, pois junta as duas, tag p + class, então essa sobrescrevera todas as que estão acima dela no exemplo. */
+            padding: 2px;
+            background: linear-gradient(to right, red, yellow);
+        }
+
+    </style>
+</head>
+
+<body>
+    <p class='observacao'>Olha essa observação!!!!</p>
+</body>
+
+</html>

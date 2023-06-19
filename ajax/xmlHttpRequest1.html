@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        /*Metodo ajax: Que recebe um objeto de configuração
+        e ele precisa ter tres parametros: metodo URL, SUCESSO, ERRO*/
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            //abrir req do tipo get
+            //espero receber dentro do paramentro config a url
+            xhr.open(config.metodo, config.url, true)
+            /*Tratar evento onload e nesse evento sera aplicada uma função*/
+            xhr.onload = e => {
+                if(xhr.status === 200) { //se for igual a 200
+                    config.sucesso(xhr.response) // passar a resposta que eu recebi porque a linha de cima terminou bem sucedida
+                } else if (xhr.status >= 400) {
+                    config.erro({
+                        codigo: xhr.status,
+                        texto: xhr.statusText
+                    })
+            }
+        }
+
+        xhr.send()
+    }
+
+    function criarTabela(estados){
+        const linhas = estados.map(estado => { //função mapa que transforma um array em outro array
+                const tdId = document.createElement('td')
+                tdId.innerHTML = estado.id
+
+                const tdNome = document.createElement('td')
+                tdNome.innerHTML = estado.nome
+
+                const tdSigla = document.createElement('td')
+                tdSigla.innerHTML = estado.sigla 
+
+                const tr = document.createElement('tr')
+
+                tr.appendChild(tdId)
+                tr.appendChild(tdNome)
+                tr.appendChild(tdSigla)
+
+                return tr
+            })
+
+            const tabela = document.createElement('table')
+            linhas.forEach(linha => tabela.appendChild(linha)) //adicionou todas as linhas a tabela
+            document.body.appendChild(tabela) //adicionar a tabela ao body
+    }
+
+    ajax({
+        url: "dados/estados.json",
+        metodo: "get", 
+        sucesso(resposta) {
+            const estados = JSON.parse(resposta)
+            criarTabela(estados)
+        
+        }, 
+        erro(e) {
+            const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)
+            document.body.appendChild(msg)
+        }
+    })
+
+    </script>
+</body>

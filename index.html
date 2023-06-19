@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo de DOM</title>
+    <style>
+      .destaque {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="titulo" class="destaque">Olá, mundo!</h1>
+
+    <script>
+      const titulo = document.getElementById("titulo");
+      titulo.addEventListener("click", function() {
+        titulo.classList.add("destaque");
+      
+      });
+      
+      titulo.addEventListener("click", function() {
+        titulo.classList.remove("destaque");
+      });
+      
+      
+    </script>
+  </body>
+</html>

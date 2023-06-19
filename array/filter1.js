@@ -7,7 +7,7 @@ const produtos = [
 
 console.log(produtos.filter(function(p) {
     return p.preco > 2500 // tipo de filtro, preço maior do que 2500
-    //return false = nenhum elemento passa, nenhum elemento vai por array resultante
+    //return false = nenhum elemento passa, nenhum elemento vai pro array resultante
     //return true = todos eles ira aparecer, pois estão no array resultante
 }))
 

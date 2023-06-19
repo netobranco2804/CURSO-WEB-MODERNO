@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+
+                //pegar lista de estados em formato json e colocar na pagina
+
+        const url = 'dados/estados.json'
+        fetch(url)
+        .then(resp => resp.json()) // função resp.json() retorna uma promisse
+        //pode encadiar outra função .then que vai ser chaamada com a resposta da promisse anterior
+        .then(estados => {
+            const itens = estados.reduce(
+            //passando opção reduce (html, estado)
+                (html, estado) => html + `<li>${estado.nome}</li>`, '' //esse '' é o valor inicial do reduce, pra dai ele começar a fazer as concatenações de forma correta
+            )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+            })
+        </script>
+</body>

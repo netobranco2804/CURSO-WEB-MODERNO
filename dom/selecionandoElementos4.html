@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        //criar uma função para facilitar o console.log
+        function log() {
+            console.log(this)
+        }
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul') //selecionando a lista
+        lista.parentNode.log() //parentNode apartir de um determinado elemento você consegue facilmente pegar o seu elemento pai
+        lista.childNodes.log() //gera efeito colateral, no console mostra as li e os text - text=colateral - pra arrumar, é só juntar os li no ul e tirar os espaçoes que iria buscar somente as li sem os text
+        
+        const primeiro = lista.firstChild //pegar primeiro elemento
+        console.log()
+        primeiro.nextSibling.log()
+
+        const ultimo = lista.lastChild //pegando utimo elemento da li
+        ultimo.log()
+        ultimo.previousSibling.log() 
+        
+
+        lista.children.log()
+        lista.firstElementChild.log() //tras primeiro elemento que foi definido na lista (primeira tag)
+        lista.lastElementChild.log() // pegando ultimo elemento
+        lista.parentNode.previousSibling.log() //me de o elemento irmão anterior ao parent da list
+        //Lista so pra lembrar, é a lista li
+        lista.parentNode.nextElementSibling.log() // me de o ultimo elemento da lista li
+
+        //maneira de pegar de fato o que você quer, evitando essa navegação acima:
+
+        document.querySelectorAll('div ul li').log()
+        </script>
+</body>
+
+</html>

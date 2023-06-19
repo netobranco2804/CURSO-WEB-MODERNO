@@ -30,3 +30,6 @@ function soma(a,b) {
     }
 }
 soma(2,3)(4)
+//poderia ser feito assim tbm pra chamar a função
+const cincoMais = soma(2,3) // colocar a função soma dentro de uma variavel
+cincoMais(4) // agora só chamar a variavel e adicionar o valor da outra função pra acrescentar e somar

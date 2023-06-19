@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Incrementando a função</title>
+    <script>
+        const imprimirResultado = function (nota) {
+            let resultado = '';
+
+            if (nota >= 9 && nota <= 10) {
+                resultado = 'Quadro de Honra';
+            } else if (nota >= 7 && nota <= 8.99) {
+                resultado = 'Aprovado';
+            } else if (nota >= 4 && nota <= 6.99) {
+                resultado = 'Recuperação';
+            } else if (nota >= 0 && nota <= 3.99) {
+                resultado = 'Reprovado';
+            } else {
+                resultado = 'Nota Inválida';
+            }
+
+            document.getElementById('resultado').textContent = resultado;
+        }
+
+        function verificarNota() {
+            const notaInput = document.getElementById('nota').value;
+            const nota = parseFloat(notaInput);
+
+            imprimirResultado(nota);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <label for="nota">Insira sua nota:</label>
+        <input type="number" id="nota" name="nota" step="0.01">
+        <button type="button" onclick="verificarNota()">Verificar</button>
+    </form>
+
+    <div id="resultado"></div>
+</body>
+</html>

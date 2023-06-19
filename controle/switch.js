@@ -1,5 +1,5 @@
 const imprimirResultado = function (nota) {
-    switch (Math.floor(nota)) {
+    switch (Math.floor(nota)) { // math.floor = arredondar a nota dos alunos para baixo.
         case 10:
         case 9:
             console.log('Quadro de Honra')
@@ -17,7 +17,7 @@ const imprimirResultado = function (nota) {
             console.log('Nota Invalida')
     }
 }
-imprimirResultado(10)
+imprimirResultado(8.9) //arredondara para 8.0, pois esta com math.floor , se fosse math.ceil iria para 9.0 a nota
 //imprimirResultado(8.9)
 //imprimirResultado(6.55)
 //imprimirResultado(2.3)

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        //primeiro passo selecionar a tag img
+        const img = document.querySelector('img')
+        //acessar os atributos do elemento img e src
+        console.log('getAttribute', img.getAttribute('src'))
+        //acessando src
+        console.log('src', img.src)
+        //forma mais reduzida de acessar:
+        console.log('["src"]', img['src'])
+        //acessando atributo
+        console.log('alt', img.alt)
+
+        //elementos implicitos
+        console.log('Elemento "img".........')
+        console.log('NodeType', img.nodeType) //todos os elementos e atributos tem uma propriedade chamada nodetype
+        
+        console.log('NodeName', img.nodeName) //Acessar o nome do atributo/elemento
+
+        //usando um atributo
+        const src = img.getAttributeNode('src') //me dara um nó que representa aquele atributo
+        console.log('Atributo "src".........')
+        console.log('NodeType', src.nodeType) // que é um atributo
+        console.log('NodeName', src.nodeName) //ver nome do elemento
+        console.log('NodeValue', src.nodeValue) //dar exatamente a url que é o valor associado aquele nó (que é do tipo atributo)
+        
+        //Selecionando o elemento Link
+        const link = document.querySelector('a')
+        console.log('Elemento "a".......')
+        console.log('href', link.href)
+        //Outra possibilidade é pegar o filho daquele elemento e ver o tipo de nó que ele representa
+        console.log('firstChild.nodeType', link.firstChild.nodeType) //no do tipo texto
+        //alterar apartir do nodeValue
+        link.firstChild.nodeValue = 'Novo Texto'
+ </script>
+</body>
+
+</html>

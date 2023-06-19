@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        //Selecionar um elemento através de um ID: #primeiro.
+        //Após selecionar o elemento pelo id, você chama a .classList.add('destaque')
+        //Com essa linha podemos ver que de fato ele selecionou o elemento primeiro. 
+        //Lembrando que o efeito de destaque esta criado em uma pasta css e esta sendo puxada para esse arquivo .html
+        document.querySelector('#primeiro').classList.add('destaque')
+        //Como nós vamos ficar adionando e removendo o destaque, vamos criar duas função
+        const selecionar = seletor =>
+        //document.querySelectorAll = selecionar mais de um elemento apartir do seletor
+        //depois fazer um forEach para percorrer todos os elementos da lista e adicionar o destaque no evento que eu pressionar    
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+        const deselecionar = seletor =>
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))
+        //Depois de ter criado a função para add destaque e a de remover destaque,proximo passo é usar ela:
+        selecionar('div') //selecionando todos os elementos que tem div
+        
+        deselecionar('*') //deselecionar todos os elementos presentes na nesse arquivo html
+
+        selecionar('.terceiro.ultimo')
+        deselecionar('*')
+    
+        //Você também pode dizer que tal elemento não é para ser selecionado:
+        selecionar(':not(#primeiro)') // selecionou tudo, menos o #primeiro elemento
+        deselecionar('*')
+
+        //Selecionando o primeiro filho de algum elemento:
+        selecionar(':nth-child(1)')
+        deselecionar('*')
+    
+        //Selecionar o primeiro elemento de um determinado tipo, que no caso seria do tipo div
+        selecionar('div:nth-of-type(1)') //selecionar o primeiro elemento da div
+        deselecionar('*')
+
+        //Selecionar apartir de um atributo
+        selecionar('[wb-attrib]')  //quando é atributo, tem que por = ('[nomeatributo]')
+    </script>
+</body>
+</html>

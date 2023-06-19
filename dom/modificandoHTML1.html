@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        //primeiramene criar uma constante body, pois você precisara inserir o conteudo através dela
+        const body = document.querySelector('body')
+        //Agora criando os elementos que estara presente em body
+        const div1 = document.createElement('div') //criar elemento div
+        div1.classList.add('destaque') //incluso no css
+        //criar conteudo da div:
+        div1.innerHTML = 'Primeiro' //nome do conteudo
+
+        //criando uma segunda div
+        const div2 = document.createElement('div')
+        //setando um atributo+valor para esse div2
+        div2.setAttribute('wm--atributo', 'valor')
+        div2.innerHTML = 'Segundo' //nome do conteudo
+
+        //criando uma terceira DIV e dentro dela adicionando um paragrafo 'p'
+
+        //Então antes vou criar um paragrafo
+        const p = document.createElement('p')
+        p.innerHTML = 'Terceiro'
+        //criando de fato a div3
+        const div3 = document.createElement('div')
+        //Adicionar o paragrafo 'p' dentro da div3 com a função appendChild
+        div3.appendChild(p) //adicionar um elemento dentro do elemento pai
+
+        //Adicionando de fato o conteudo dentro do body:
+        body.appendChild(div1)
+        body.appendChild(div2)
+        body.appendChild(div3)
+
+
+        /* Com o metodo insertBefore:
+        Você cria um texto e pode adicionar dentro do elemento pai que no caso é o div3
+        Colocando o texto antes do elemento [0] = antes em cima do nome terceiro.
+
+        */
+        //criando um nó de texto
+        const texto = document.createTextNode('antes...')
+        div3.insertBefore(texto, div3.childNodes[0])
+
+        //Criando um clone apartir de um determinado elemento HTML
+        //passar atributo true = se essa clonagem é uma clonagem profunda que ele vai copiar não só o elemnto atual, mas todos os seus filhos
+        //se no caso passar false = não ira trazer seus filhos
+        const div4 = div3.cloneNode(true) //criou um clone do div3 passando para o div4
+        body.appendChild(div4)
+
+        //removendo esse nó=conteudo div
+        body.removeChild(div3)
+    </script>
+</body>
+
+</html>

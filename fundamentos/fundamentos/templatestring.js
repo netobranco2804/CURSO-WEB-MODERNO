@@ -1,5 +1,5 @@
 const nome = "Neto";
-const concatenacao = "Olá" + nome + "!"; //Forma feia, porém funcional
+const concatenacao = 'Olá ' + nome + '!'; //Forma feia, porém funcional
 
 
 
@@ -7,7 +7,7 @@ const template = `
 Olá
 ${nome}!
 `
-console.log(nome, template); // forma mais elegante, também funcional
+console.log(concatenacao, template); // forma mais elegante, também funcional
 
 //Expressões
 
